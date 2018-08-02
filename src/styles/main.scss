@@ -1,0 +1,27 @@
+@import 'home';
+@import 'menu';
+@import 'episodeDetails';
+@import 'admin';
+@import 'episodeList';
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.link-white {
+  color: white;
+  text-decoration: unset;
+}
+
+.link-black {
+  color: black;
+  text-decoration: unset;
+}
+
+.active {
+  color: rgb(138, 138, 138);
+  cursor: default;
+}
