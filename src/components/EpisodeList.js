@@ -20,7 +20,6 @@ export default class EpisodeList extends Component {
     })
   }
 
-
   render() {
     const episodeList = (data) => {
       if(data) {

@@ -9,6 +9,7 @@ export default class EditEpisode extends Component {
   constructor() {
     super()
     this.state = {
+      // episode updates
       title: '',
       date: '',
       description: '',
@@ -16,7 +17,11 @@ export default class EditEpisode extends Component {
       audio: '',
       video: '',
       id: '',
+
+      // redirect
       redirectToAdmin: false,
+
+      // log in
       loggedIn: false,
       username: '',
       password: '',
@@ -77,7 +82,6 @@ export default class EditEpisode extends Component {
     const {title, date, description, story, audio, video, id } = this.state
     axios.patch('/edit-episode', {title, date, description, story, audio, video, id}).then(response => {
       const resp = response.data[0]
-      // console.log(moment(resp.date_posted, "MM-DD-YYYY"))
       this.setState({
         title: resp.title,
         date: resp.date_posted,
@@ -107,6 +111,7 @@ export default class EditEpisode extends Component {
     })
   }
 
+  // setting the episode as featured on landing page
   featured() {
     axios.patch('/set-featured', {id: this.state.id}).then(response => {
       console.log(response)
@@ -114,6 +119,7 @@ export default class EditEpisode extends Component {
   }
 
   render() {
+    // after submitting changes/deleting, this redirects to the admin page and clears the timer
     if (this.state.redirectToAdmin) {
       clearTimeout(this.timer)
       return (
@@ -135,15 +141,22 @@ export default class EditEpisode extends Component {
         {this.state.loggedIn &&
           <div>
             <form onSubmit={this.handleSubmit}>
-              <input value={this.state.title} name='title' onChange={event => this.update(event)}/>
-              <DatePicker
-                selected={moment(this.state.date)}
-                onChange={(e) => this.dateChange(e)}
-              />
-              <input value={this.state.description} name='description' onChange={event => this.update(event)}/>
-              <input value={this.state.story} name='story' onChange={event => this.update(event)}/>
-              <input value={this.state.audio} name='audio' onChange={event => this.update(event)}/>
-              <input value={this.state.video} name='video' onChange={event => this.update(event)}/>
+              <label> Title
+                <input value={this.state.title} name='title' onChange={event => this.update(event)}/>
+              </label>
+              <DatePicker selected={moment(this.state.date)} onChange={(e) => this.dateChange(e)}/>
+              <label> Description
+                <input value={this.state.description} name='description' onChange={event => this.update(event)}/>
+              </label>
+              <label> Story
+                <input value={this.state.story} name='story' onChange={event => this.update(event)}/>
+              </label>
+              <label> Audio
+                <input value={this.state.audio} name='audio' onChange={event => this.update(event)}/>
+              </label>
+              <label> Video
+                <input value={this.state.video} name='video' onChange={event => this.update(event)}/>
+              </label>
               <input type="submit" value="Submit"/>
             </form>
             <button onClick={() => this.featured()}>Set as featured</button>

@@ -10,18 +10,23 @@ export default class Admin extends Component {
   constructor() {
     super()
     this.state = {
+      // episode list
+      data: [],
+
+      // new episode
       title: '',
       date: moment()._d,
       description: '',
       story: '',
       audio: '',
       video: '',
-      data: [],
       startDate: moment(),
+
+      // log in
       loggedIn: false,
-      message: '',
       username: '',
       password: '',
+      message: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getMessage = this.getMessage.bind(this);
@@ -145,35 +150,25 @@ export default class Admin extends Component {
           <div>
             <button onClick={() => this.logout()}>Logout</button>
             <form onSubmit={this.handleSubmit}>
-              <label>
-                Title
+              <label> Title
                 <input value={this.state.title} type="text" name="title" onChange={event => this.handleChange(event)}/>
               </label>
-              <label>
-                Date
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={(e) => this.dateChange(e)}
-                />
+              <label> Date
+                <DatePicker selected={this.state.startDate} onChange={(e) => this.dateChange(e)}/>
               </label>
-              <label>
-                Description
+              <label> Description
                 <textarea value={this.state.description} name="description" onChange={event => this.handleChange(event)}/>
               </label>
-              <label>
-                Story
+              <label> Story
                 <textarea value={this.state.story} name="story" onChange={event => this.handleChange(event)}/>
               </label>
-              <label>
-                Audio URL
+              <label> Audio URL
                 <input value={this.state.audio} type="text" name="audio" onChange={event => this.handleChange(event)}/>
               </label>
-              <label>
-                Video URL
+              <label> Video URL
                 <input value={this.state.video} type="text" name="video" onChange={event => this.handleChange(event)}/>
               </label>
-              <label>
-              <input type="submit" value="Submit"/>
+              <label><input type="submit" value="Submit"/>
               </label>
             </form>
             <div>
