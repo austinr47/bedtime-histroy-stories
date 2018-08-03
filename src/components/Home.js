@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import background from '../assets/cropped-background_large.png'
 import axios from 'axios'
 
@@ -18,9 +18,11 @@ export default class Home extends Component {
       this.setState({
         title: resp.title,
         description: resp.description,
+        id: resp.id,
       })
     })
   }
+
   render() {
     return (
       <div id='home' style={{ backgroundImage: 'url(' + background + ')',}}>
@@ -42,15 +44,17 @@ export default class Home extends Component {
         </div>
 
         <div className='content'>
-          <div className='featured'>
-            <div className='image'>
+            <div className='featured'>
+              <div className='image'>
 
+              </div>
+              <div>
+                <NavLink to={`/episodes/${this.state.id}`}>
+                  <h2>{this.state.title}</h2>
+                </NavLink>
+                <p>{this.state.description}</p>
+              </div>
             </div>
-            <div>
-              <h2>{this.state.title}</h2>
-              <p>{this.state.description}</p>
-            </div>
-          </div>
           <div className='links'>
             <span>Listen on Apple Podcasts</span>
             <span>Watch Videos on YouTube</span>

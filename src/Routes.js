@@ -7,6 +7,7 @@ import EpisodeList from './components/EpisodeList'
 import Admin from './components/Admin'
 import HowToListen from './components/HowToListen'
 import { Route, Switch } from 'react-router-dom'
+import EditEpisode from './components/EditEpisode';
 import EpisodeDetails from './components/EpisodeDetails';
 
 class Routes extends Component {
@@ -15,15 +16,15 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={ Home } /> 
-          <Route exact path='/featured' component={ Home } /> 
-          <Route path='/book' component={ Book } /> 
-          <Route path='/episodes/:name' component={ EpisodeList } /> 
+          <Route path='/featured' component={ Home } /> 
+          <Route path='/episodes/:id' component={ EpisodeDetails } /> 
           <Route path='/episodes' component={ EpisodeList } /> 
+          <Route path='/book' component={ Book } /> 
           <Route path='/how-to-listen' component={ HowToListen } /> 
           <Route path='/about' component={ About } /> 
           <Route path='/contact' component={ Contact } /> 
           <Route path='/admin' component={ Admin } /> 
-          <Route path='/edit/:id' component={ EpisodeDetails } /> 
+          <Route path='/edit/:id' component={ EditEpisode } /> 
         </Switch>
       </div>
     );

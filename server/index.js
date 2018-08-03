@@ -26,12 +26,13 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false,
   resave: false,
-  cookie: { maxAge: 360000 },
+  cookie: { maxAge: 600000 },
 }));
 
 app.get('/episodes', controller.getEpisodes);
 app.get('/episode/:id', controller.getOneEpisode);
 app.get('/featured', controller.getFeatured);
+app.patch('/set-featured', controller.setFeatured);
 app.post('/add-episode', controller.addEpisodes);
 app.patch('/edit-episode', controller.editEpisode);
 app.delete('/delete-episode/:id', controller.deleteEpisode);

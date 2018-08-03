@@ -19,19 +19,23 @@ export default class Admin extends Component {
       data: [],
       startDate: moment(),
       loggedIn: false,
-      message: ''
+      message: '',
+      username: '',
+      password: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getMessage = this.getMessage.bind(this);
+    this.timer = null
   }
 
   componentDidMount() {
     // seeing if user is persistant logged in
     axios.get('/user-data/').then(response => {
       if (response.data.user) {
-          this.setState({
-            loggedIn: true
-          })
+        this.setState(
+          {loggedIn: true, username: '', password: ''},
+          () => this.timer = setTimeout(() => this.setState({ loggedIn: false }), 600000)
+        )
       }
     });
     // getting list of episodes
@@ -82,9 +86,10 @@ export default class Admin extends Component {
   login() {
     axios.post('/login', {username: this.state.username, password: this.state.password}).then(response => {
       if(response.data.user.username === this.state.username) {
-        this.setState({
-          loggedIn: true
-        })
+        this.setState(
+          {loggedIn: true},
+          () => this.timer = setTimeout(() => this.setState({ loggedIn: false,  }), 600000)
+        )
       }
       // catching error to display message back from server
     }).catch(error => {
@@ -101,6 +106,7 @@ export default class Admin extends Component {
 
     logout() {
       axios.post('/signout').then(response => {
+        clearTimeout(this.timer)
         this.setState({
           loggedIn: false
         })

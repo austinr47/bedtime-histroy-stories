@@ -47,6 +47,14 @@ module.exports = {
         .catch( (err) => res.status(500).send(err) );
   },
 
+  setFeatured: (req, res) => {
+    const db = req.app.get('db');
+
+    db.set_featured(req.body.id)
+      .then( (response) => res.status(200).send(response) )
+        .catch( (err) => res.status(500).send(err) );
+  },
+
   signout: ( req, res, next ) => {
     const { session } = req;
     session.destroy();
