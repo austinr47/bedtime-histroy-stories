@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import Menu from './Menu'
 
 export default class EditEpisode extends Component {
@@ -161,9 +161,12 @@ export default class EditEpisode extends Component {
             </form>
             <button onClick={() => this.featured()}>Set as featured</button>
             <button onClick={() => this.delete()}>Delete</button>
+            <Link to='/admin'><button>Back</button></Link>
           </div>
         }
       </div>
     );
   }
 }
+
+

@@ -92,8 +92,8 @@ export default class Admin extends Component {
     axios.post('/login', {username: this.state.username, password: this.state.password}).then(response => {
       if(response.data.user.username === this.state.username) {
         this.setState(
-          {loggedIn: true},
-          () => this.timer = setTimeout(() => this.setState({ loggedIn: false,  }), 600000)
+          {loggedIn: true, username: '', password: ''},
+          () => this.timer = setTimeout(() => this.setState({ loggedIn: false }), 600000)
         )
       }
       // catching error to display message back from server
@@ -124,11 +124,12 @@ export default class Admin extends Component {
         return data.map((item, index) => {
             return (
               <div key={item.id} className='episode-details'>
-                <div>{item.title}</div>
-                <div>{item.date_posted}</div>
-                <div>{item.description}</div>
-                <div>{item.video_url}</div>
-                <div>{item.audio_url}</div>
+                <div>Preview: <iframe title={item.id} width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${item.audio_url}&color=%234c4c44&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`}></iframe></div>
+                <div>Title: {item.title}</div>
+                <div>Date: {item.date_posted}</div>
+                <div>Description: {item.description}</div>
+                <div>Video: {item.video_url}</div>
+                <div>Audio: {item.audio_url}</div>
                 <Link to={`/edit/${item.id}`}><button type="button" className="edit">Edit</button></Link>
               </div>
             )

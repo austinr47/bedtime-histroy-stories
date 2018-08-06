@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Menu from './Menu'
 import background from '../assets/cropped-background_large.png'
-import Pict from '../assets/asset 6.jpeg'
 
 export default class EpisodeList extends Component {
   constructor(props) {
@@ -24,9 +23,10 @@ export default class EpisodeList extends Component {
     const episodeList = (data) => {
       if(data) {
         return data.map((item, index) => {
+          // console.log(item)
             return (
               <div key={item.id} className='details'>
-                <img alt={item.title} src={Pict}/>
+                <iframe title={item.id} width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${item.audio_url}&color=%234c4c44&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}></iframe>
                 <div>
                   <h3>{item.title}</h3>
                   <div>{item.description}</div>

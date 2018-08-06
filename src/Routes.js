@@ -16,7 +16,7 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={ Home } /> 
-          <Route path='/featured' component={ Home } /> 
+          <Route path='/home' component={ Home } /> 
           <Route path='/episodes/:id' component={ EpisodeDetails } /> 
           <Route path='/episodes' component={ EpisodeList } /> 
           <Route path='/book' component={ Book } /> 
