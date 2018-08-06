@@ -59,16 +59,19 @@ export default class Home extends Component {
             </div>
           </div>
           <div className='links'>
-            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={appleLogo} alt='appleLogo'/><span>Listen on <br/> Apple Podcasts</span></a>
-            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={youTube} alt='appleLogo'/><span>Watch Videos on <br/> YouTube</span></a>
-            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={spotifyLogo} alt='appleLogo'/><span>Listen on <br/> Spodify</span></a>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><span className='img'><img src={appleLogo} alt='appleLogo'/></span><span className='words'>Listen on <br/> Apple Podcasts</span></a>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><span className='img'><img src={youTube} alt='appleLogo'/></span><span className='words'>Watch Videos on <br/> YouTube</span></a>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><span className='img'><img src={spotifyLogo} alt='appleLogo'/></span><span className='words'>Listen on <br/> Spodify</span></a>
           </div>
         </div>
 
-        <div className='footer'>
+        <div className='social'>
           <a href='https://www.facebook.com/bedtimehistory/' target='blank'><i className="fab fa-facebook-square fa-4x"></i></a>
           <a href='https://www.instagram.com/bedtimehistory/' target='blank'><i className="fab fa-instagram fa-4x"></i></a>
           <a href='https://www.youtube.com/c/bedtimehistory' target='blank'><i className="fab fa-youtube fa-4x"></i></a>
+        </div>
+        <div className='footer'>
+
         </div>
       </div>
     );

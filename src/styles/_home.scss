@@ -1,6 +1,6 @@
 #home {
   background-size: 100vw 100%;
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
 
   .header {
@@ -50,7 +50,7 @@
       background-color: #fff;
       display: flex;
       border-radius: 10px;
-      box-shadow: 1px 2px 25px rgb(48, 48, 48);
+      box-shadow: 4px 6px 25px rgb(91, 91, 91);
 
       .iframe {
         width: 60%;
@@ -71,58 +71,71 @@
       a:hover {
         box-shadow: 4px 6px 45px rgb(19, 19, 19);
       }
-
+      
       a {
-        border-radius: 10px;
+        border-radius: 5px;
         box-sizing: border-box;
         background-color: white;
-        height: 25%;
+        height: 28%;
         width: 300px;
         text-align: center;
         font-size: 22px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 4px 6px 25px rgb(63, 63, 63);
-
-
-        span {
+        box-shadow: 4px 6px 25px rgb(91, 91, 91);
+        
+        
+        .words {
           flex: 1;
+          font-size: 15px;
         }
-
-        img {
+        
+        .img {
           box-sizing: border-box;
           height: 100%;
-          width: auto;
-          background-color: rgb(240, 209, 209);
-          border-top-left-radius: 10px;
-          border-bottom-left-radius: 10px;
+          width: 35%;
+          background-color: rgb(255, 93, 93);
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
           padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            height: 50%;
+          }
         }
         
       }
       a:nth-child(1) {
-        img{
-          padding: 10px 20px;
+        .img{
+          // padding: 10px 20px;
         }
       }
       a:nth-child(3) {
-        img{
-          width: 45%;
-          padding: 10px 20px;
+        .img{
+          // width: 45%;
+          // padding: 10px 20px;
         }
       }
     }
   }
 
-  .footer {
+  .social {
     width: 100%;
     text-align: center;
-    margin-top: 25px;
+    margin: 25px 0px;
 
     i {
       margin: 0 10px;
       color: white;
     }
   }
+
+  // .footer {
+  //   height: 50px;
+  //   background-color: rgb(75, 75, 75);
+  // }
 }

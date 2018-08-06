@@ -5,6 +5,7 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Menu from './Menu'
 import 'react-datepicker/dist/react-datepicker.css';
+import background from '../assets/cropped-background_large.png'
 
 export default class Admin extends Component {
   constructor() {
@@ -138,7 +139,10 @@ export default class Admin extends Component {
     }
     return (
       <div className='admin'>
-          <Menu />
+        <div className='header' style={{ backgroundImage: 'url(' + background + ')',}}>
+          
+        </div>
+        <Menu />
         {!this.state.loggedIn &&
           <div>
             <input placeholder='Username' type='text' name="username" onChange={event => this.handleChange(event)}/>

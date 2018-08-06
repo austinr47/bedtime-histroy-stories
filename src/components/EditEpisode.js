@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import { Redirect, Link } from 'react-router-dom'
 import Menu from './Menu'
+import background from '../assets/cropped-background_large.png'
 
 export default class EditEpisode extends Component {
   constructor() {
@@ -129,6 +130,9 @@ export default class EditEpisode extends Component {
 
     return (
       <div className='episode-details'>
+        <div className='header' style={{ backgroundImage: 'url(' + background + ')',}}>
+          
+        </div>
         <Menu />
         {!this.state.loggedIn &&
           <div>
