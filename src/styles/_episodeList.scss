@@ -1,28 +1,59 @@
 #episodes {
-  width: 100vw;
-
-  .header {
-    height: 200px;
-    background-size: 100% 100%;
-  }
+  // width: 100vw;
 
   .content {
     display: flex;
     flex-wrap: wrap;
-    background-color: green;
+    // background-color: green;
     justify-content: center;
   }
 
+  .details:hover {
+    // box-shadow: 4px 6px 45px rgb(19, 19, 19);
+  }
+
   .details {
-    margin: 30px;
-    width: 25%;
+    max-width: 260px;
+    min-width: 220px;
+    margin: 20px;
+    width: 20%;
     word-wrap: break-word;
-    background-color: yellow;
-    // display: flex;
+    // background-color: yellow;
+    border-radius: 6px;
+    box-shadow: 4px 6px 25px rgb(91, 91, 91);
+
+    .description {
+      height: 100px;
+      padding: 10px;
+      overflow: hidden;
+      // box-shadow: 0 -40px 20px -30px rgb(101, 101, 101) inset;
+      // box-shadow: 0px 15px 10px -15px #111 inset;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+    
+    h3 {
+      cursor: pointer;
+      // width: 90%;
+      padding: 10px 2px;
+      text-align: center;
+      // background-color: red;
+      margin: auto;
+      height: 60px;
+    }
 
     img {
       width: 90%;
       margin: 10px;
+    }
+
+    .gotodetails {
+      width: 100%;
+      font-size: 15px;
+      font-style: italic;
+      color: rgb(65, 65, 65);
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 }

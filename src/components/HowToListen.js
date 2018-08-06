@@ -17,15 +17,17 @@ export default class HowToListen extends Component {
     }
   }
 
-  showInstructions(key) {
-    const value = !this.state[key]
+  showInstructions(key1, key2, key3, key4) {
+    const value = !this.state[key1]
     this.setState({
-      [key]: value
+      [key1]: value,
+      [key2]: false,
+      [key3]: false,
+      [key4]: false,
     })
   }
 
   render() {
-    console.log(this.state)
     const showIphone = this.state.iphone ? '' : 'hide'
     const showAndroid = this.state.android ? '' : 'hide'
     const showAudio = this.state.audio ? '' : 'hide'
@@ -42,19 +44,19 @@ export default class HowToListen extends Component {
           <h3>How to listen to the podast</h3>
           <p>Click on an image to view instructions</p>
           <div className='devices'>
-            <div className='iphone' onClick={() => {this.showInstructions('iphone')}}>
+            <div className='iphone' onClick={() => {this.showInstructions('iphone', 'android', 'audio', 'video')}}>
               <img alt='iPhone' src={iphone} />
               <span>iPhone</span>
             </div>
-            <div className='android' onClick={() => {this.showInstructions('android')}}>
+            <div className='android' onClick={() => {this.showInstructions('android', 'iphone', 'audio', 'video')}}>
               <img alt='Android' src={android}/>
               <span>Android</span>
             </div>
-            <div className='audio' onClick={() => {this.showInstructions('audio')}}>
+            <div className='audio' onClick={() => {this.showInstructions('audio', 'iphone', 'android', 'video')}}>
               <img alt='Audio' src={speaker}/>
               <span>Audio</span>
             </div>
-            <div className='videos' onClick={() => {this.showInstructions('video')}}>
+            <div className='videos' onClick={() => {this.showInstructions('video', 'iphone', 'audio', 'android')}}>
               <img alt='Videos' src={video}/>
               <span>Videos</span>
             </div>
