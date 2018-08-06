@@ -67,8 +67,12 @@
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
+      
+      a:hover {
+        box-shadow: 4px 6px 45px rgb(19, 19, 19);
+      }
 
-      > span {
+      a {
         border-radius: 10px;
         box-sizing: border-box;
         background-color: white;
@@ -78,19 +82,35 @@
         font-size: 22px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         box-shadow: 4px 6px 25px rgb(63, 63, 63);
-      }
 
-      img {
-        margin-right: 7px;
-        box-sizing: border-box;
-        height: 100%;
-        width: auto;
-        background-color: green;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        padding: 10px;
+
+        span {
+          flex: 1;
+        }
+
+        img {
+          box-sizing: border-box;
+          height: 100%;
+          width: auto;
+          background-color: rgb(240, 209, 209);
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          padding: 10px;
+        }
+        
+      }
+      a:nth-child(1) {
+        img{
+          padding: 10px 20px;
+        }
+      }
+      a:nth-child(3) {
+        img{
+          width: 45%;
+          padding: 10px 20px;
+        }
       }
     }
   }

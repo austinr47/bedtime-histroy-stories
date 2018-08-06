@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import background from '../assets/cropped-background_large.png'
+import background from '../assets/cropped-background_large_new.png'
 import axios from 'axios'
 import appleLogo from '../assets/Apple_Logo.svg'
+import youTube from '../assets/You-Tube logo.png'
+import spotifyLogo from '../assets/Spotify_logo.svg.png'
 
 export default class Home extends Component {
   constructor() {
@@ -57,9 +59,9 @@ export default class Home extends Component {
             </div>
           </div>
           <div className='links'>
-            <span><img src={appleLogo} alt='appleLogo'/><span>Listen on <br/> Apple Podcasts</span></span>
-            <span><span></span><span>Watch Videos on <br/> YouTube</span></span>
-            <span><span></span><span>Listen on <br/> Spodify</span></span>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={appleLogo} alt='appleLogo'/><span>Listen on <br/> Apple Podcasts</span></a>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={youTube} alt='appleLogo'/><span>Watch Videos on <br/> YouTube</span></a>
+            <a className='link-black' href='https://www.youtube.com/c/bedtimehistory' target='blank'><img src={spotifyLogo} alt='appleLogo'/><span>Listen on <br/> Spodify</span></a>
           </div>
         </div>
 
