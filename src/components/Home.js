@@ -71,7 +71,6 @@ export default class Home extends Component {
           <a href='https://www.youtube.com/c/bedtimehistory' target='blank'><i className="fab fa-youtube fa-4x"></i></a>
         </div>
         <div className='footer'>
-
         </div>
       </div>
     );
