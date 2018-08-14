@@ -43,21 +43,21 @@ export default class HowToListen extends Component {
         <div className='content'>
           <h3>How to listen to the podast</h3>
           <p>Click on an image to view instructions</p>
-          <div className='devices'>
-            <div className='iphone' onClick={() => {this.showInstructions('iphone', 'android', 'audio', 'video')}}>
-              <img alt='iPhone' src={iphone} />
+          <div className='all-devices'>
+            <div className='device iphone' onClick={() => {this.showInstructions('iphone', 'android', 'audio', 'video')}}>
+              <div><img alt='iPhone' src={iphone} /></div>
               <span>iPhone</span>
             </div>
-            <div className='android' onClick={() => {this.showInstructions('android', 'iphone', 'audio', 'video')}}>
-              <img alt='Android' src={android}/>
+            <div className='device android' onClick={() => {this.showInstructions('android', 'iphone', 'audio', 'video')}}>
+              <div><img alt='Android' src={android}/></div>
               <span>Android</span>
             </div>
-            <div className='audio' onClick={() => {this.showInstructions('audio', 'iphone', 'android', 'video')}}>
-              <img alt='Audio' src={speaker}/>
+            <div className='device audio' onClick={() => {this.showInstructions('audio', 'iphone', 'android', 'video')}}>
+              <div><img alt='Audio' src={speaker}/></div>
               <span>Audio</span>
             </div>
-            <div className='videos' onClick={() => {this.showInstructions('video', 'iphone', 'audio', 'android')}}>
-              <img alt='Videos' src={video}/>
+            <div className='device videos' onClick={() => {this.showInstructions('video', 'iphone', 'audio', 'android')}}>
+              <div><img alt='Videos' src={video}/></div>
               <span>Videos</span>
             </div>
           </div>
