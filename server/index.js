@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // connection to heroku db
-massive(process.env.CONNECTION_STRING).then(db => {
+massive(process.env.DATABASE_URL).then(db => {
   app.set('db', db)
 }).catch(error => {
   console.log('error', error);
