@@ -2,6 +2,9 @@
   "name": "bedtime-history-stories",
   "version": "0.1.0",
   "main": "server/index.js",
+  "engines": {
+    "node": "10.8.0"
+  },
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
