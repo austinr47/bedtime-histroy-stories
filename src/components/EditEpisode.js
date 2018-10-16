@@ -26,6 +26,9 @@ export default class EditEpisode extends Component {
       loggedIn: false,
       username: '',
       password: '',
+
+      //css
+      expand: false,
     }
     this.handleSubmit=this.handleSubmit.bind(this)
   }
@@ -67,6 +70,15 @@ export default class EditEpisode extends Component {
     }).catch(error => {
       this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
     });
+  }
+
+  // updating state with any changes
+  handleChange(event) {
+    let key = event.target.name
+    let value = event.target.value
+    this.setState({
+      [key]: value
+    })
   }
 
   // used to update state for any input
@@ -112,11 +124,16 @@ export default class EditEpisode extends Component {
     })
   }
 
+  // used if the login is wrong --  AKA wrong user/password
+  getMessage = error => error.response
+    ? error.response.data
+      ? error.response.data.message
+      : JSON.stringify(error.response.data, null, 2)
+    : error.message;
+
   // setting the episode as featured on landing page
   featured() {
-    axios.patch('/set-featured', {id: this.state.id}).then(response => {
-      console.log(response)
-    })
+    axios.patch('/set-featured', {id: this.state.id})
   }
 
   render() {
@@ -128,44 +145,57 @@ export default class EditEpisode extends Component {
       )
     }
 
+    const story = {
+      marginBottom: '0px'
+    }
+
+    const height = this.state.expand ? {height: '550px'} : null
+
     return (
-      <div className='episode-details'>
+      <div className='edit-episode'>
         <div className='header' style={{ backgroundImage: 'url(' + background + ')',}}>
           
         </div>
         <Menu />
         {!this.state.loggedIn &&
-          <div>
-            <input placeholder='Username' type='text' name="username" onChange={event => this.update(event)}/>
-            <input placeholder='Password' type='password' name="password" onChange={event => this.update(event)}/>
-            <button onClick={() => this.login()}>Login</button>
+          <div id='admin-login'>
+          <div className="admin-container">
+            <h2 className="form-signin-heading">Please login</h2>
+            <input className="form-control user" placeholder='Username' type='text' name="username" onChange={event => this.handleChange(event)}/>
+            <input className="form-control password" placeholder='Password' type='password' name="password" onChange={event => this.handleChange(event)}/>
+            <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={() => this.login()}>Login</button>
             {this.state.message}
           </div>
+        </div>
         }
         {this.state.loggedIn &&
-          <div>
-            <form onSubmit={this.handleSubmit}>
+          <div className='info'>
+            <form className='form' onSubmit={this.handleSubmit}>
               <label> Title
-                <input value={this.state.title} name='title' onChange={event => this.update(event)}/>
+                <input className='form-control' value={this.state.title} name='title' onChange={event => this.update(event)}/>
               </label>
               <DatePicker selected={moment(this.state.date)} onChange={(e) => this.dateChange(e)}/>
               <label> Description
-                <input value={this.state.description} name='description' onChange={event => this.update(event)}/>
+                <textarea className='form-control' value={this.state.description} name='description' onChange={event => this.update(event)}/>
               </label>
-              <label> Story
-                <input value={this.state.story} name='story' onChange={event => this.update(event)}/>
+              <label style={story}> Story
+                <textarea style={height} className='form-control' value={this.state.story} name='story' onChange={event => this.update(event)}/>
               </label>
+              {!this.state.expand && <span onClick={() => this.setState({expand: true})}>Expand</span>}
+              {this.state.expand && <span onClick={() => this.setState({expand: false})}>Colapse</span>}
               <label> Audio
-                <input value={this.state.audio} name='audio' onChange={event => this.update(event)}/>
+                <input className='form-control' value={this.state.audio} name='audio' onChange={event => this.update(event)}/>
               </label>
               <label> Video
-                <input value={this.state.video} name='video' onChange={event => this.update(event)}/>
+                <input className='form-control' value={this.state.video} name='video' onChange={event => this.update(event)}/>
               </label>
-              <input type="submit" value="Submit"/>
+              <input className='form-control' type="submit" value="Submit"/>
             </form>
-            <button onClick={() => this.featured()}>Set as featured</button>
-            <button onClick={() => this.delete()}>Delete</button>
-            <Link to='/admin'><button>Back</button></Link>
+            <div className='buttons'>
+              <button className='btn btn-sm btn-primary' onClick={() => this.featured()}>Set as featured</button>
+              <button className='btn btn-sm btn-danger' onClick={() => this.delete()}>Delete</button>
+              <Link className='' to='/admin'><button className='btn btn-sm btn-primary'>Back</button></Link>
+            </div>
           </div>
         }
       </div>

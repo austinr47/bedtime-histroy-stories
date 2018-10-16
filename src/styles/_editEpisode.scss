@@ -1,15 +1,4 @@
-.admin {
-  .episode-details {
-    border: 1px solid black;
-    width: 400px;
-    height: 600px;
-    margin: 10px;
-    padding: 10px;
-
-    div {
-      margin: 5px 0;
-    }
-  }
+.edit-episode {
 
   #admin-login {
     margin: 30px auto;
@@ -31,10 +20,23 @@
     display: flex;
     flex-direction: column;
     max-width: 550px;
-    height: 600px;
+    // height: 600px;
     padding: 30px;
     background-color: #fff;
     margin: 10px auto;
+
+    span {
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    span:hover {
+      background-color: rgba(208, 208, 208, 0.557);
+      color: blue;
+    }
   }
 
   .info {
@@ -43,16 +45,23 @@
     justify-content: center;
     flex-direction: column;
     background-color: rgb(233, 233, 233);
+    padding-bottom: 30px;
 
-    .logout {
-      width: 80px;
-      margin: 10px 0px 0px 10px;
+    .buttons {
+      display: flex;
+      justify-content: center;
     }
 
-    > div {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
+    button {
+      width: 120px;
+      margin: 10px 0px 0px 10px;
+      // margin: 10px auto 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+      // margin-bottom: 30px;
     }
   }
 }
