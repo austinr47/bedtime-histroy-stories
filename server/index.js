@@ -81,8 +81,8 @@ app.get('/user-data', (req, res) => {
   res.json({ user: req.session.user })
 });
 
-// const PORT = process.env.SERVER_PORT || 3035;
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT || 3035;
+app.listen(PORT, () => {
     console.log(`Am I on?? Yup, on ${PORT}. `); 
 } );
 
