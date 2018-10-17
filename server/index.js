@@ -13,6 +13,8 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(express.static(__dirname + '/static'));
+
 app.use(bodyParser.json());
 
 // connection to heroku db
