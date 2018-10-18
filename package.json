@@ -28,6 +28,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
@@ -35,7 +36,11 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+<<<<<<< HEAD
     "heroku-postbuild": "npm install && npm run build"
+=======
+    "heroku-postbuild": "npm run build"
+>>>>>>> 43a90e8e7e2f26207e682837fe8fca104238ae5a
   },
   "proxy": "http://localhost:3035"
 }
