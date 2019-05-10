@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // connection to heroku db
-massive(process.env.CONNECTION_STRING).then(db => {
+massive(process.env.DATABASE_URL).then(db => {
   app.set('db', db)
 }).catch(error => {
   console.log('error', error);
@@ -78,7 +78,7 @@ app.get('/user-data', (req, res) => {
   res.json({ user: req.session.user })
 });
 
-const PORT = process.env.SERVER_PORT || 3035;
+const PORT = process.env.SERVER_PORT || 3036;
 app.listen(PORT, () => {
     console.log(`Am I on?? Yup, on ${PORT}. `); 
 } );
