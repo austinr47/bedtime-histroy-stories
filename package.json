@@ -35,7 +35,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
-  }
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3036"
 }

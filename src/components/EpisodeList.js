@@ -34,7 +34,7 @@ export default class EpisodeList extends Component {
       const checkValue = value.split('').map(item => item.toUpperCase()).join('')
       if(title.includes(checkValue)) {
         return list.push(item)
-      } return null
+      } else return null
     })
     this.setState({
       searchData: list
