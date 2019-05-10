@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Menu from './Menu'
-import 'react-datepicker/dist/react-datepicker.css';
+import 'react-datepicker/dist/react-datepicker.css'
 import background from '../assets/cropped-background_large.png'
+import Loading from './Loading'
 
 export default class Admin extends Component {
   constructor() {
@@ -28,6 +29,8 @@ export default class Admin extends Component {
       username: '',
       password: '',
       message: '',
+
+      loading: true
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getMessage = this.getMessage.bind(this);
@@ -47,7 +50,8 @@ export default class Admin extends Component {
     // getting list of episodes
     axios.get('/episodes').then(response => {
       this.setState({
-        data: response.data
+        data: response.data,
+        loading: false
       })
     })
   }
@@ -71,6 +75,7 @@ export default class Admin extends Component {
 
   // posting new episode and then getting it to add to list
   handleSubmit(event) {
+
     axios.post('/add-episode', { title: `${this.state.title}`, date: `${this.state.date}`, description: `${this.state.description}`, story: `${this.state.story}`, audio: `${this.state.audio}`, video: `${this.state.video}` }).then(() => {
       this.setState({
         title: '',
@@ -85,6 +90,7 @@ export default class Admin extends Component {
         })
       })
     })
+    // this is preventing the page from reloading
     event.preventDefault();
   }
 
@@ -103,21 +109,21 @@ export default class Admin extends Component {
     });
   }
 
-  // used if the login is wrong --  AKA wrong user/password
+  // used if the login is wrong -- AKA wrong user/password
   getMessage = error => error.response
     ? error.response.data
       ? error.response.data.message
       : JSON.stringify(error.response.data, null, 2)
     : error.message;
 
-    logout() {
-      axios.post('/signout').then(response => {
-        clearTimeout(this.timer)
-        this.setState({
-          loggedIn: false
-        })
+  logout() {
+    axios.post('/signout').then(response => {
+      clearTimeout(this.timer)
+      this.setState({
+        loggedIn: false
       })
-    }
+    })
+  }
 
   render() {
     const episodeList = (data) => {
@@ -131,7 +137,7 @@ export default class Admin extends Component {
                 <div>Description: {item.description}</div>
                 <div>Video: {item.video_url}</div>
                 <div>Audio: {item.audio_url}</div>
-                <Link to={`/edit/${item.id}`}><button type="button" className="edit">Edit</button></Link>
+                <Link className='btn btn-primary btn-lg' to={`/edit/${item.id}`}><button className='edit btn btn-primary btn-lg' type="button">Edit</button></Link>
               </div>
             )
         })
@@ -144,36 +150,40 @@ export default class Admin extends Component {
         </div>
         <Menu />
         {!this.state.loggedIn &&
-          <div>
-            <input placeholder='Username' type='text' name="username" onChange={event => this.handleChange(event)}/>
-            <input placeholder='Password' type='password' name="password" onChange={event => this.handleChange(event)}/>
-            <button onClick={() => this.login()}>Login</button>
-            {this.state.message}
+          <div id='admin-login'>
+            <div className="admin-container">
+              <h2 className="form-signin-heading">Please login</h2>
+              <input className="form-control user" placeholder='Username' type='text' name="username" onChange={event => this.handleChange(event)}/>
+              <input className="form-control password" placeholder='Password' type='password' name="password" onChange={event => this.handleChange(event)}/>
+              <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={() => this.login()}>Login</button>
+              {this.state.message}
+            </div>
           </div>
         }
-        {this.state.loggedIn &&
-          <div>
-            <button onClick={() => this.logout()}>Logout</button>
-            <form onSubmit={this.handleSubmit}>
+        {this.state.loggedIn  &&
+          <div className='info'>
+            <button className='btn btn-sm btn-danger btn-block logout' onClick={() => this.logout()}>Logout</button>
+            <form className='form' onSubmit={this.handleSubmit}>
+              <div>Add new episode</div>
               <label> Title
-                <input value={this.state.title} type="text" name="title" onChange={event => this.handleChange(event)}/>
+                <input className='form-control' value={this.state.title} type="text" name="title" onChange={event => this.handleChange(event)}/>
               </label>
               <label> Date
                 <DatePicker selected={this.state.startDate} onChange={(e) => this.dateChange(e)}/>
               </label>
               <label> Description
-                <textarea value={this.state.description} name="description" onChange={event => this.handleChange(event)}/>
+                <textarea className='form-control' value={this.state.description} name="description" onChange={event => this.handleChange(event)}/>
               </label>
               <label> Story
-                <textarea value={this.state.story} name="story" onChange={event => this.handleChange(event)}/>
+                <textarea className='form-control' value={this.state.story} name="story" onChange={event => this.handleChange(event)}/>
               </label>
               <label> Audio URL
-                <input value={this.state.audio} type="text" name="audio" onChange={event => this.handleChange(event)}/>
+                <input className='form-control' value={this.state.audio} type="text" name="audio" onChange={event => this.handleChange(event)}/>
               </label>
               <label> Video URL
-                <input value={this.state.video} type="text" name="video" onChange={event => this.handleChange(event)}/>
+                <input className='form-control' value={this.state.video} type="text" name="video" onChange={event => this.handleChange(event)}/>
               </label>
-              <label><input type="submit" value="Submit"/>
+              <label><input className='btn btn-lg btn-primary btn-block' type="submit" value="Submit"/>
               </label>
             </form>
             <div>

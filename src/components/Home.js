@@ -17,7 +17,6 @@ export default class Home extends Component {
 
   componentDidMount() {
     axios.get('/featured').then(response => {
-      console.log(response)
       const resp = response.data[0]
       this.setState({
         title: resp.title,

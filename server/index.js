@@ -4,6 +4,7 @@ const massive = require('massive');
 const controller = require('./controller.js');
 const session = require('express-session');
 const bcrypt =  require('bcrypt');
+const mailCtrl = require('./mailCtrl')
 
 // using for bcrypt
 const saltRounds = 12
@@ -11,6 +12,8 @@ const saltRounds = 12
 require('dotenv').config();
 
 const app = express();
+
+app.use(express.static(__dirname + '/static'));
 
 app.use(bodyParser.json());
 
@@ -37,6 +40,8 @@ app.post('/add-episode', controller.addEpisodes);
 app.patch('/edit-episode', controller.editEpisode);
 app.delete('/delete-episode/:id', controller.deleteEpisode);
 app.post( '/signout', controller.signout );
+
+app.post('/api/send', mailCtrl.mail)
 
 // login
 app.post('/login', (req, res) => {
