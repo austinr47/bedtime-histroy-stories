@@ -73,7 +73,7 @@ app.post('/register', (req, res) => {
       req.session.user = { username: username };
       res.json({ user: req.session.user})
     }).catch(error => {
-      res.status(500).json({ message: 'Something bad happened! '})
+      res.status(500).json({ message: `Something bad happened! ${error}`})
     })
   })
 });
